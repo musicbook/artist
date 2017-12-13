@@ -1,0 +1,17 @@
+version: "2"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=artist
+    ports:
+      - "5434:5432"
+  artist-service:
+    image: artists-api:0.01
+    environment:
+      - KUMULUZEE_DATASOURCES0_CONNECTIONURL=jdbc:postgresql://postgres:5432/artist
+    ports:
+      - "8084:8084"
+    depends_on:
+      - postgres
