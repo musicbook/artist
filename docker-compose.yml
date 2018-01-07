@@ -8,7 +8,8 @@ services:
     ports:
       - "5434:5432"
   artist-service:
-    image: artists-api:0.01
+    #image: artists-api:0.01
+    image: a_test-api
     environment:
       - KUMULUZEE_DATASOURCES0_CONNECTIONURL=jdbc:postgresql://postgres:5432/artist
     ports:

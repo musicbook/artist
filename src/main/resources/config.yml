@@ -16,3 +16,16 @@ kumuluzee:
       username: postgres
       password: postgres
       max-pool-size: 20
+  health:
+      servlet:
+        mapping: /health
+        enabled: true
+      checks:
+        data-source-health-check:
+          jndi-name: jdbc/ArtistsDS
+  metrics:
+      web-instrumentation:
+        - name: metricsEndpoint
+          url-pattern: /metrics/*
+        - name: artistsEndpoint
+          url-pattern: /v1/artists/*

@@ -10,6 +10,8 @@ import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import com.fri.musicbook.ArtistBean;
 import com.fri.musicbook.*;
+import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 @RequestScoped
 @Path("/artists")
@@ -23,6 +25,7 @@ public class ArtistResource {
     @Inject
     private ArtistBean artistBean;
 
+    @Metered(name = "getArtists")
     @GET
     public Response getArtists() {
 
@@ -30,7 +33,7 @@ public class ArtistResource {
 
         return Response.ok(artists).build();
     }
-
+    @Metered(name = "getArtistById")
     @GET
     @Path("/{artistId}")
     public Response getArtist(@PathParam("artistId") String artistId) {
@@ -44,6 +47,8 @@ public class ArtistResource {
         return Response.status(Response.Status.OK).entity(artist).build();
     }
 
+    @Timed(name = "getArtistsFiltered_time")
+    @Metered(name = "getArtistsFiltered")
     @GET
     @Path("/filtered")
     public Response getArtistsFiltered() {
