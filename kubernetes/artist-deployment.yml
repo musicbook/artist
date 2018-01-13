@@ -26,7 +26,7 @@ spec:
           - name: KUMULUZEE_DATASOURCES0_PASSWORD
             value: postgres
           - name: KUMULUZEE_SERVER_BASEURL
-            value: http://169.51.16.117:30057
+            value: http://169.51.16.117:31773
           - name: KUMULUZEE_VERSION
             value: 1.0.1
         ports:
