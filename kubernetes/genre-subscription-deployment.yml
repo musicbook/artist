@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: artist-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: artist
+    spec:
+      containers:
+      - image: blajan/artists-api
+        name: artist
+        env:
+          - name: KUMULUZEE_DISCOVERY_CLUSTER
+            value: bluemix
+          - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
+            value: http://etcd:2379
+          - name: KUMULUZEE_CONFIG_ETCD_HOSTS
+            value: http://etcd:2379
+          - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+            value: jdbc:postgresql://postgres-artist:5435/artist
+          - name: KUMULUZEE_DATASOURCES0_USERNAME
+            value: userdb
+          - name: KUMULUZEE_DATASOURCES0_PASSWORD
+            value: postgres
+          - name: KUMULUZEE_SERVER_BASEURL
+            value: http://169.51.16.117:30057
+          - name: KUMULUZEE_VERSION
+            value: 1.0.1
+        ports:
+        - containerPort: 8084
+          name: server
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8084
+          initialDelaySeconds: 35
+          periodSeconds: 5
