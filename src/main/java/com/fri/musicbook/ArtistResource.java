@@ -10,6 +10,7 @@ import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import com.fri.musicbook.ArtistBean;
 import com.fri.musicbook.*;
+import com.kumuluz.ee.logs.cdi.Log;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 
@@ -17,6 +18,7 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 @Path("/artists")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Log
 public class ArtistResource {
 
     @Context

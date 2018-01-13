@@ -9,4 +9,4 @@ spec:
     protocol: TCP
     targetPort: 8084
   selector:
-    app: genre-subscription
+    app: artist
