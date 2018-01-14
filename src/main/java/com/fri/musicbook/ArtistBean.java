@@ -46,6 +46,10 @@ public class ArtistBean {
     @DiscoverService("albums")
     private String basePath;
 
+    public String getAlbumPath(){
+        return basePath;
+    }
+
     public List<Artist> getArtists(){
 
         Query query = em.createNamedQuery("com.fri.musicbook.Artist.getAll", Artist.class);
@@ -142,7 +146,7 @@ public class ArtistBean {
     }
 
     public List<Album> getAlbums(String artistId) {
-
+    /*
         try {
            // System.out.println("try"+basePath+"|..|"+artistId);
             HttpGet request = new HttpGet(basePath + "/v1/albums/artist/"+artistId);
@@ -183,7 +187,7 @@ public class ArtistBean {
             //log.error(msg);
             throw new InternalServerErrorException(msg);
         }
-
+*/
         return new ArrayList<>();
 
     }

@@ -27,6 +27,14 @@ public class ArtistResource {
     @Inject
     private ArtistBean artistBean;
 
+    //@Metered(name = "getArtists")
+    @GET
+    @Path("/path")
+    public Response getPath() {
+
+        return Response.ok(artistBean.getAlbumPath()).build();
+    }
+
     @Metered(name = "getArtists")
     @GET
     public Response getArtists() {
