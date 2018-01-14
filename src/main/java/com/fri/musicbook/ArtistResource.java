@@ -18,7 +18,7 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 @Path("/artists")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Log
+//@Log
 public class ArtistResource {
 
     @Context

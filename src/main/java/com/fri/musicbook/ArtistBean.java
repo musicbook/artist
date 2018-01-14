@@ -146,48 +146,48 @@ public class ArtistBean {
     }
 
     public List<Album> getAlbums(String artistId) {
-    /*
+
         try {
-           // System.out.println("try"+basePath+"|..|"+artistId);
+            System.out.println("try"+basePath+"|..|"+artistId);
             HttpGet request = new HttpGet(basePath + "/v1/albums/artist/"+artistId);
-           // if (request==null)System.out.println("req je null");
-           // else System.out.println("req ni null");
+            if (request==null)System.out.println("req je null");
+            else System.out.println("req ni null");
 
             HttpResponse response = httpClient.execute(request);
-          //  if (response==null)System.out.println("resp je null");
-          //  else System.out.println("resp ni null");
+            if (response==null)System.out.println("resp je null");
+            else System.out.println("resp ni null");
             int status = response.getStatusLine().getStatusCode();
-           // System.out.println("stat je "+status);
+            System.out.println("stat je "+status);
             if (status >= 200 && status < 300) {
-            //    System.out.println("v status");
+                System.out.println("v status");
                 HttpEntity entity = response.getEntity();
-            //    System.out.println(entity+"||"+entity.getContent()+"||"+entity.toString()+"||");
+                System.out.println(entity+"||"+entity.getContent()+"||"+entity.toString()+"||");
                 if (entity != null) {
-                    //System.out.println(EntityUtils.toString(entity));
+                    System.out.println(EntityUtils.toString(entity));
                     List<Album> albums = objectMapper.readValue(EntityUtils.toString(entity), new TypeReference<List<Album>>(){});
-              //      System.out.println("json:"+ars);
+                    System.out.println("json:"+albums);
                     return albums;
                     //getObjects(EntityUtils.toString(entity));
                 }
-             //   System.out.println("ent=null");
+                System.out.println("ent=null");
             } else {
-              //  System.out.println("else");
+                System.out.println("else");
                 String msg = "Remote server '" + basePath + "' is responded with status " + status + ".";
                 //log.error(msg);
                 throw new InternalServerErrorException(msg);
             }
 
         } catch (IOException e) {
-           // System.out.println("Exc"+e.getStackTrace()+
-            //        "\n"+e.getCause()+"\n"
-             //       +e.getLocalizedMessage()+"\n"
-             //       +e.getClass()+"\n"+e.getMessage());
+            System.out.println("Exc"+e.getStackTrace()+
+                    "\n"+e.getCause()+"\n"
+                    +e.getLocalizedMessage()+"\n"
+                    +e.getClass()+"\n"+e.getMessage());
 
             String msg = e.getClass().getName() + " occured: " + e.getMessage();
             //log.error(msg);
             throw new InternalServerErrorException(msg);
         }
-*/
+
         return new ArrayList<>();
 
     }
