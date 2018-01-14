@@ -161,9 +161,9 @@ public class ArtistBean {
             if (status >= 200 && status < 300) {
                 System.out.println("v status");
                 HttpEntity entity = response.getEntity();
-                System.out.println(entity+"||"+entity.getContent()+"||"+entity.toString()+"||");
+               // System.out.println(entity+"||"+entity.getContent()+"||"+entity.toString()+"||");
                 if (entity != null) {
-                    System.out.println(EntityUtils.toString(entity));
+                  //  System.out.println(EntityUtils.toString(entity));
                     List<Album> albums = objectMapper.readValue(EntityUtils.toString(entity), new TypeReference<List<Album>>(){});
                     System.out.println("json:"+albums);
                     return albums;
