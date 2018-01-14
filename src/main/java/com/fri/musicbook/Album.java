@@ -1,24 +1,32 @@
 package com.fri.musicbook;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import org.eclipse.persistence.annotations.UuidGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity(name = "albums")
+@NamedQueries(value =
+        {
+                @NamedQuery(name = "albums.getAll", query = "SELECT o FROM albums o"),
+                @NamedQuery(name = "albums.getAlbumsByArtist", query = "SELECT o FROM albums o WHERE o.artistId = :artistId")
+        })
+@UuidGenerator(name = "idGenerator")
 public class Album {
     //private String year_of_relese;12
-    //@Column(name = "album_name")
+    @Column(name = "album_name")
     private String albumName;
 
-   // @Column(name="artist_id")
+    @Column(name="artist_id")
     private Integer artistId;
 
     //private String genre;
-   // @Id
-   // @Column(name = "album_id")
+    @Id
+    @Column(name = "album_id")
     private Integer albumId;
 
-  //  @Transient
-   private List<Object> songs;
+    @Transient
+    private String songs;
 
     // Sets/Gets
 
@@ -48,6 +56,14 @@ public class Album {
 
     public void setArtistId(Integer artist) {
         this.artistId = artist;
+    }
+
+    public String getSongs() {
+        return songs;
+    }
+
+    public void setSongs(String songs) {
+        this.songs = songs;
     }
 /*
     public int getYear_of_relese(){
