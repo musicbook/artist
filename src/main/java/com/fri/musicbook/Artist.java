@@ -23,6 +23,8 @@ public class Artist {
     @Column(name = "genre_id")
     private String genreId;
 
+    @Transient
+    private List<Album> albums;
 
     public String getId() {
         return id;
@@ -46,5 +48,13 @@ public class Artist {
 
     public void setGenreId(String genreId) {
         this.genreId = genreId;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 }
